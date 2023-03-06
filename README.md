@@ -64,4 +64,6 @@ Part 2: Deploy the Project inside of SageMaker Studio
 
     ![](images/batch-create-project.png)
 
-8. After a few minutes, your example project should be deployed and ready to use.
+8. After a few minutes, your example project should be deployed.
+
+9. The SageMaker Project will create two different CodeCommit repositories. Copy the code samples created under [seedcode](./seedcode/) in the appropriate repository.
