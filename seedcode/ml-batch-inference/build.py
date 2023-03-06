@@ -192,7 +192,7 @@ def main():
         model_package = describe_model_package(model_package_arn)
     
         model = PyTorchModel(
-            entry_point=os.path.join(BASE_DIR, "batch_inference", "inference.py"),
+            entry_point=os.path.join(BASE_DIR, "pipelines", "batch_inference", "inference.py"),
             name=model_package_group_name + "-" + str(model_package["ModelPackageVersion"]),
             framework_version=str(args.inference_framework_version),
             py_version=args.inference_python_version,
