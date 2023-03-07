@@ -386,10 +386,11 @@ Resources:
       SageMakerProjectRepoNameBranch: !Ref SageMakerProjectRepoNameBranchParameter
       SageMakerProjectsProjectName: !Ref SageMakerProjectsProjectNameParameter
       TemplateSubstitutions:
-        ___EXAMPLE_SUBSITUTION___ : 'ExampleReplacementValue'
+        AWSDEFAULT___CODE_STAGING_BUCKET___ : !Ref BootstrapS3Bucket
         AWSDEFAULT___PROJECT_NAME___ : !Ref SageMakerProjectsProjectNameParameter
       Archives:
-        - ['example-seedcode.zip','/seedcode']
+        - ['multi-model-trainining-batch-inference-pipeline-build.zip','/seedcode/ml-build-train']
+        - ['multi-model-trainining-batch-inference-pipeline-deploy.zip','/seedcode/ml-batch-inference']
 
 
 Outputs:
