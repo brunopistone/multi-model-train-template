@@ -202,6 +202,23 @@ Resources:
         -
           Key: sagemaker:studio-visibility
           Value: 'true'
+  
+  ServiceCatalogRole:
+    Type: AWS::IAM::Role
+    Properties: 
+      RoleName: !Join ['-', ['SMCustomProject-SAMPLE-Service-Catalog-Role', !Select [4, !Split ['-', !Select [2, !Split ['/', !Ref 'AWS::StackId']]]]]]
+      Description: Role used for launching the deploying the SageMaker Project template
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - servicecatalog.amazonaws.com
+            Action: 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSageMakerAdmin-ServiceCatalogProductsServiceRolePolicy
+        - arn:aws:iam::aws:policy/AmazonSageMakerFullAccess
 
   ServiceCatalogProductAssociation:
     Type: AWS::ServiceCatalog::PortfolioProductAssociation
@@ -217,7 +234,7 @@ Resources:
       Description: Role for launching the SAMPLE product
       PortfolioId: !Ref PortfolioIDParameter
       ProductId: !Ref ServiceCatalogProduct
-      RoleArn: !Join [ ':', [ 'arn', !Ref 'AWS::Partition', 'iam:', !Ref 'AWS::AccountId', 'role/service-role/AmazonSageMakerServiceCatalogProductsLaunchRole'] ]
+      RoleArn: !GetAtt ServiceCatalogRole.Arn
 
   CustomBackedLambda:
     Type: AWS::Lambda::Function
