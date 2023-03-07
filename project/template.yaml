@@ -21,16 +21,6 @@ Resources:
     DeletionPolicy: Retain
     Properties:
       BucketName: !Sub 'sagemaker-project-${SageMakerProjectId}'
-
-  ModelPackageGroupModel1:
-    Type: 'AWS::SageMaker::ModelPackageGroup'
-    Properties:
-      ModelPackageGroupName: !Sub '${SageMakerProjectName}-${SageMakerProjectId}-1'
-  
-  ModelPackageGroupModel2:
-    Type: 'AWS::SageMaker::ModelPackageGroup'
-    Properties:
-      ModelPackageGroupName: !Sub '${SageMakerProjectName}-${SageMakerProjectId}-2'
   
   ModelBuildCodeCommitEventRule:
     Type: 'AWS::Events::Rule'

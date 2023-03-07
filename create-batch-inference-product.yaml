@@ -203,7 +203,6 @@ Resources:
           Key: sagemaker:studio-visibility
           Value: 'true'
 
-
   ServiceCatalogProductAssociation:
     Type: AWS::ServiceCatalog::PortfolioProductAssociation
     Properties: 
