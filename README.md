@@ -64,4 +64,4 @@ Part 2: Deploy the Project inside of SageMaker Studio
 
 8. After a few minutes, your example project should be deployed.
 
-9. The SageMaker Project will create two different CodeCommit repositories. Copy the code samples created under [seedcode](./seedcode/) in the appropriate repository.
+9. Follow the [README](./seedcode/README.md) file for using the code example
