@@ -14,7 +14,6 @@ Part 1: Create initial Service Catalog Product
 
 1. To create the Service Catalog product for this project, download the `create-batch-inference-product.yaml` and upload it into your CloudFormation console: https://console.aws.amazon.com/cloudformation
 
-
 2. Update the Parameters section:
 
     - Supply a unique name for the stack
@@ -29,14 +28,13 @@ Part 1: Create initial Service Catalog Product
 
     - Support information is not available inside of SageMaker Studio, but is available in the Service Catalog Dashboard.
 
-    - Updating the source code repository information is only necessary if you forked this repo and modified it.
+    - Updating the source code repository by pointing to the current repo: https://github.com/brunopistone/multi-model-train-template/archive/refs/heads/main.zip
 
         ![](images/batch-params-05.png)
 
 3. Choose __Next__, __Next__ again, check the box acknowledging that the template will create IAM resources, and then choose __Create Stack__.
 
 4. Your template should now be visible inside of SageMaker Studio.
-
 
 Part 2: Deploy the Project inside of SageMaker Studio
 
