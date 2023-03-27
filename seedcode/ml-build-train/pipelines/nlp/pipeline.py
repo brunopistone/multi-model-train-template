@@ -91,10 +91,10 @@ def get_pipeline(
     sagemaker_project_arn=None,
     role=None,
     default_bucket=None,
-    model_package_group_name_1="AbalonePackageGroup",
-    model_package_group_name_2="AbaloneModelPackageGroup-Example",
-    pipeline_name="AbalonePipeline",
-    base_job_prefix="Abalone",
+    model_package_group_name_1="NlpPackageGroup-1",
+    model_package_group_name_2="NlpModelPackageGroup-2",
+    pipeline_name="NlpPipeline",
+    base_job_prefix="Nlp",
     processing_instance_type="ml.t3.large",
     training_instance_type="ml.m5.large",
     inference_instance_type="ml.m5.large"
@@ -106,6 +106,10 @@ def get_pipeline(
         role = sagemaker.session.get_execution_role(sagemaker_session)
 
     pipeline_session = get_pipeline_session(region, default_bucket)
+
+    input_data = ParameterString(
+        name="InputData", default_value="s3://sagemaker-sample-files/datasets/tabular/synthetic_credit_card_transactions"
+    )
 
     model_approval_status = ParameterString(
         name="ModelApprovalStatus", default_value="PendingManualApproval"
@@ -120,7 +124,6 @@ def get_pipeline(
     )
     
     processing_framework_version = "0.23-1"
-    processing_input_files_path = "e2e-base/data/input"
     processing_output_files_path = "e2e-base/data/output"
     
     processor = FrameworkProcessor(
@@ -137,7 +140,7 @@ def get_pipeline(
         inputs=[
             ProcessingInput(
                 input_name="input",
-                source="s3://{}/{}".format(default_bucket, processing_input_files_path),
+                source=input_data,
                 destination="/opt/ml/processing/input"
             )
         ],

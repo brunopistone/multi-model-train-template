@@ -2,7 +2,7 @@
 AWSTemplateFormatVersion: "2010-09-09"
 
 Description: >-
-  Template for creating a Service Catalog product based on the SAMPLE SageMaker Custom Example
+  Template for creating a Service Catalog product for Multi-model training and batch inference pipeline
 Parameters:
 
   PortfolioIDParameter:
@@ -11,7 +11,7 @@ Parameters:
 
   ProductNameParameter:
     Type: String
-    Default: 'multi-model-train-template'
+    Default: 'Multi-model training and batch inference pipeline'
     Description: The name of this product within the portfolio.
 
   ProductDescriptionParameter:
@@ -51,12 +51,12 @@ Parameters:
 
   SageMakerProjectRepoNameBranchParameter:
     Type: String
-    Default: ''
+    Default: 'sagemaker-custom-project-templates-main'
     Description: 'Name/Branch of the SageMaker Projects Examples GitHub Repo'
   
   SageMakerProjectsProjectNameParameter:
     Type: String
-    Default: 'multi-model-train-template-main'
+    Default: 'multi-model-trainining-batch-inference-pipeline'
     Description: Project folder inside of the GitHub repo for this project
 
 Metadata: 
