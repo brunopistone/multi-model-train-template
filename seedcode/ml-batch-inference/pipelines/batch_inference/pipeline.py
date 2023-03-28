@@ -2,11 +2,8 @@ import os
 
 import boto3
 import sagemaker
-from sagemaker import model
-from sagemaker.pytorch import PyTorchModel
 import sagemaker.session
 from sagemaker.workflow.parameters import (
-    ParameterInteger,
     ParameterString,
 )
 from sagemaker.workflow.pipeline import Pipeline
@@ -115,8 +112,6 @@ def get_pipeline(
     pipeline_session = get_pipeline_session(region, default_bucket)
 
     #### PARAMETERS
-    model_url = ParameterString("ModelUrl")
-
     input_path = ParameterString("InputPath")
     output_path = ParameterString("OutputPath")
     
@@ -143,7 +138,7 @@ def get_pipeline(
         
         transform_steps.append(transform_step)
         
-        index +=1
+        index += 1
 
     #### PIPELINE
     pipeline = Pipeline(

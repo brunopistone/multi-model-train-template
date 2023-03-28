@@ -87,6 +87,8 @@ def extend_config(args, pipeline_definitions, container_definitions, stage_confi
         stage_config["Tags"] = {}
     # Create new params and tags
     new_params = {
+        "InputPath": "s3://{}/inference/data/input".format(args.default_bucket),
+        "OutputPath": "s3://{}/inference/data/output".format(args.default_bucket),
         "SageMakerProjectName": args.sagemaker_project_name,
         "SageMakerProjectId": args.sagemaker_project_id,
         "ModelExecutionRoleArn": args.model_execution_role,
@@ -191,7 +193,6 @@ def main():
         # Get the latest approved package
         model_package = get_approved_package(model_package_group_name)
         model_package_arn = model_package["ModelPackageArn"]
-
         model_package = describe_model_package(model_package_arn)
     
         model = PyTorchModel(
