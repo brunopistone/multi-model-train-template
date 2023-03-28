@@ -6,10 +6,7 @@ import logging
 import os
 from pipelines import run_pipeline
 import sagemaker
-from sagemaker.model import Model
 from sagemaker.pytorch import PyTorchModel
-from sagemaker.utils import name_from_base
-from sagemaker import get_execution_role
 import traceback
 
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))

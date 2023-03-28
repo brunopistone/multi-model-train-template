@@ -51,12 +51,12 @@ Parameters:
 
   SageMakerProjectRepoNameBranchParameter:
     Type: String
-    Default: 'sagemaker-custom-project-templates-main'
+    Default: ''
     Description: 'Name/Branch of the SageMaker Projects Examples GitHub Repo'
   
   SageMakerProjectsProjectNameParameter:
     Type: String
-    Default: 'multi-model-trainining-batch-inference-pipeline'
+    Default: 'multi-model-train-template-main'
     Description: Project folder inside of the GitHub repo for this project
 
 Metadata: 
