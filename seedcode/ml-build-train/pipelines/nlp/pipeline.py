@@ -99,13 +99,10 @@ def get_pipeline(
     training_instance_type="ml.m5.large",
     inference_instance_type="ml.m5.large"
 ):
-    
-    sagemaker_session = get_session(region, default_bucket)
+    pipeline_session = get_pipeline_session(region, default_bucket)
     
     if role is None:
-        role = sagemaker.session.get_execution_role(sagemaker_session)
-
-    pipeline_session = get_pipeline_session(region, default_bucket)
+        role = sagemaker.session.get_execution_role(pipeline_session)
 
     input_data = ParameterString(
         name="InputData", default_value="s3://sagemaker-sample-files/datasets/tabular/synthetic_credit_card_transactions"
@@ -132,7 +129,7 @@ def get_pipeline(
         role=role,
         instance_count=processing_instance_count_param,
         instance_type=processing_instance_type,
-        sagemaker_session=sagemaker_session
+        sagemaker_session=pipeline_session
     )
     
     run_args = processor.get_run_args(
@@ -258,6 +255,7 @@ def get_pipeline(
     pipeline = Pipeline(
         name=pipeline_name,
         parameters=[
+            input_data,
             model_approval_status,
             processing_instance_count_param,
             training_instance_count_param
@@ -269,7 +267,7 @@ def get_pipeline(
             step_train_2, 
             step_register_model_2
         ],
-        sagemaker_session=sagemaker_session
+        sagemaker_session=pipeline_session
     )
     
     return pipeline

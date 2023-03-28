@@ -67,7 +67,7 @@ Resources:
               - !Ref 'AWS::Partition'
               - 'iam:'
               - !Ref 'AWS::AccountId'
-              - role/service-role/AmazonSageMakerServiceCatalogProductsUseRole
+              - role/AmazonSageMakerServiceCatalogProductsUseRoleMultiModelTB
           Id: !Sub 'codecommit-${SageMakerProjectName}-modelbuild'
   
   ModelBuildCodeCommitRepository:
@@ -96,7 +96,7 @@ Resources:
           - !Ref 'AWS::Partition'
           - 'iam:'
           - !Ref 'AWS::AccountId'
-          - role/service-role/AmazonSageMakerServiceCatalogProductsUseRole
+          - role/AmazonSageMakerServiceCatalogProductsUseRoleMultiModelTB
       Artifacts:
         Type: CODEPIPELINE
       Environment:
@@ -119,7 +119,7 @@ Resources:
                 - !Ref 'AWS::Partition'
                 - 'iam:'
                 - !Ref 'AWS::AccountId'
-                - role/service-role/AmazonSageMakerServiceCatalogProductsUseRole
+                - role/AmazonSageMakerServiceCatalogProductsUseRoleMultiModelTB
           - Name: AWS_REGION
             Value: !Ref 'AWS::Region'
           - Name: SAGEMAKER_PROJECT_ARN
@@ -147,7 +147,7 @@ Resources:
           - !Ref 'AWS::Partition'
           - 'iam:'
           - !Ref 'AWS::AccountId'
-          - role/service-role/AmazonSageMakerServiceCatalogProductsUseRole
+          - role/AmazonSageMakerServiceCatalogProductsUseRoleMultiModelTB
       ArtifactStore:
         Type: S3
         Location: !Ref MlOpsArtifactsBucket
@@ -217,7 +217,7 @@ Resources:
               - !Ref 'AWS::Partition'
               - 'iam:'
               - !Ref 'AWS::AccountId'
-              - role/service-role/AmazonSageMakerServiceCatalogProductsUseRole
+              - role/AmazonSageMakerServiceCatalogProductsUseRoleMultiModelTB
           Id: !Sub 'sagemaker-${SageMakerProjectName}-trigger'
   
   ModelDeploySageMakerEventRule2:
@@ -255,7 +255,7 @@ Resources:
               - !Ref 'AWS::Partition'
               - 'iam:'
               - !Ref 'AWS::AccountId'
-              - role/service-role/AmazonSageMakerServiceCatalogProductsUseRole
+              - role/AmazonSageMakerServiceCatalogProductsUseRoleMultiModelTB
           Id: !Sub 'sagemaker-${SageMakerProjectName}-trigger'
   
   ModelDeployCodeCommitEventRule:
@@ -291,7 +291,7 @@ Resources:
               - !Ref 'AWS::Partition'
               - 'iam:'
               - !Ref 'AWS::AccountId'
-              - role/service-role/AmazonSageMakerServiceCatalogProductsUseRole
+              - role/AmazonSageMakerServiceCatalogProductsUseRoleMultiModelTB
           Id: !Sub 'codecommit-${SageMakerProjectName}-trigger'
   
   ModelDeployCodeCommitRepository:
@@ -320,7 +320,7 @@ Resources:
           - !Ref 'AWS::Partition'
           - 'iam:'
           - !Ref 'AWS::AccountId'
-          - role/service-role/AmazonSageMakerServiceCatalogProductsUseRole
+          - role/AmazonSageMakerServiceCatalogProductsUseRoleMultiModelTB
       Artifacts:
         Type: CODEPIPELINE
       Environment:
@@ -341,7 +341,7 @@ Resources:
                 - !Ref 'AWS::Partition'
                 - 'iam:'
                 - !Ref 'AWS::AccountId'
-                - role/service-role/AmazonSageMakerServiceCatalogProductsUseRole
+                - role/AmazonSageMakerServiceCatalogProductsUseRoleMultiModelTB
           - Name: SOURCE_MODEL_PACKAGE_GROUP_NAMES
             Value: !Join 
               - ','
@@ -380,7 +380,7 @@ Resources:
           - !Ref 'AWS::Partition'
           - 'iam:'
           - !Ref 'AWS::AccountId'
-          - role/service-role/AmazonSageMakerServiceCatalogProductsUseRole
+          - role/AmazonSageMakerServiceCatalogProductsUseRoleMultiModelTB
       Artifacts:
         Type: CODEPIPELINE
       Environment:
@@ -414,7 +414,7 @@ Resources:
           - !Ref 'AWS::Partition'
           - 'iam:'
           - !Ref 'AWS::AccountId'
-          - role/service-role/AmazonSageMakerServiceCatalogProductsUseRole
+          - role/AmazonSageMakerServiceCatalogProductsUseRoleMultiModelTB
       ArtifactStore:
         Type: S3
         Location: !Ref MlOpsArtifactsBucket
@@ -468,7 +468,7 @@ Resources:
                     - 'iam:'
                     - !Ref 'AWS::AccountId'
                     - >-
-                      role/service-role/AmazonSageMakerServiceCatalogProductsUseRole
+                      role/AmazonSageMakerServiceCatalogProductsUseRoleMultiModelTB
                 StackName: !Sub >-
                   sagemaker-${SageMakerProjectName}-${SageMakerProjectId}-deploy-staging
                 TemplateConfiguration: 'BuildArtifact::staging-config-export.json'
@@ -517,7 +517,7 @@ Resources:
                     - 'iam:'
                     - !Ref 'AWS::AccountId'
                     - >-
-                      role/service-role/AmazonSageMakerServiceCatalogProductsUseRole
+                      role/AmazonSageMakerServiceCatalogProductsUseRoleMultiModelTB
                 Capabilities: CAPABILITY_NAMED_IAM
                 StackName: !Sub >-
                   sagemaker-${SageMakerProjectName}-${SageMakerProjectId}-deploy-prod
