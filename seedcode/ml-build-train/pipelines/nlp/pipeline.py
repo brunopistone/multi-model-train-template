@@ -105,7 +105,7 @@ def get_pipeline(
         role = sagemaker.session.get_execution_role(pipeline_session)
 
     input_data = ParameterString(
-        name="InputData", default_value="s3://sagemaker-sample-files/datasets/tabular/synthetic_credit_card_transactions"
+        name="InputData", default_value="s3://{}/datasets/tabular/tweets_dataset".format(default_bucket)
     )
 
     model_approval_status = ParameterString(

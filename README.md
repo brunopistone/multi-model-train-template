@@ -8,6 +8,14 @@ The purpose of this template is to deploy a Sagemaker Training Pipeline for para
 
 ![Architecture.png](images/Architecture.png)
 
+## Prerequisites
+
+Copy data from the public S3 bucket `sagemaker-sample-files` from your default bucket.
+
+```
+aws s3 cp s3://sagemaker-sample-files/datasets/tabular/tweets_dataset/TheSocialDilemma.csv s3://DOC-EXAMPLE-BUCKET/datasets/tabular/tweets_dataset/TheSocialDilemma.csv
+```
+
 ## Instructions
 
 Part 1: Create initial Service Catalog Product
